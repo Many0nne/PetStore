@@ -26,6 +26,8 @@ public class AnimalRepository {
 
     // On récupère la liste des animaux d'un magasin selon son identifiant
     public List<Animal> getAnimalsByPetStoreId(Long petStoreId) {
+        // On utilise TypedQuery pour effectuer une requête typée en JPA
+        // Il est préférable d'utiliser TypedQuery lorsqu'on sait le type de retour de la requête
         TypedQuery<Animal> query = em.createQuery(
                 "SELECT a FROM Animal a WHERE a.petstore.id = :petStoreId", Animal.class);
         query.setParameter("petStoreId", petStoreId);
